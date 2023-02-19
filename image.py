@@ -11,4 +11,11 @@ response = openai.Image.create(
 )
 image_url = response['data'][0]['url']
 
-print(image_url)
+# print(image_url)
+
+# 이미지 가져오기
+image = requests.get(image_url)
+img = Image.open(BytesIO(image.content))
+
+# 이미지 보여주기
+img.show()
